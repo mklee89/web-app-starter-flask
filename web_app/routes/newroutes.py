@@ -1,5 +1,12 @@
-
+import os
+from dotenv import load_dotenv
+import datetime
+import requests
+import json
 from flask import Blueprint, request, render_template
+
+load_dotenv()
+api_key = os.getenv("NYT_API_KEY", default="OOPS")
 
 newroutes = Blueprint("newroutes", __name__)
 
@@ -13,6 +20,55 @@ def request_books_to_read():
     print("FINDING BOOKS...")
     print("FORM DATA:", dict(request.form))
     #return jsonify(request.form)
+
+    book_genre = request.form["Bookgenre"]
+    year_published = request.form["Year"]
+
+
+
+
+
+
+
+
+
+    genre_name="hardcover-fiction"
+    request_url = f"https://api.nytimes.com/svc/books/v3/lists/current/{genre_name}.json?api-key={api_key}"
+    response = requests.get(request_url)
+    print(type(response))
+
+    parsed_response = json.loads(response.text)
+
+    for b in parsed_response["results"]["books"]:
+        print(b["rank"], b["title"], b["author"], b["description"])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     #product_name = request.form["product_name"]
     #flash(f"Product '{product_name}' created successfully!", "success") # use the "success" category to correspond with twitter bootstrap alert colors
