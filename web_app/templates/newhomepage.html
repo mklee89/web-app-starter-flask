@@ -18,14 +18,15 @@
         p {  color: white; font-family: "georgia"; } </style>
         <h1>Georgetown Books</h1>
         <hr>
-        <form>
+        <form action="/bookstoread" method="POST">
             <fieldset>
                <p>
                 <label>Book Genre</label>  
-                <select id = "Bookgenre">
+                <select name = "Bookgenre">
                         <option value = "best-sellers-navigation">Best Sellers</option>
                         <option value = "combined-print-and-e-book-fiction">Combined Print and e-book Fiction</option>
                         <option value = "combined-print-and-e-book-nonfiction">Combined Print and e-book combined-print-and-e-book-nonfiction</option>
+                        <option value = "hardcover-fiction">Hardcover Fiction</option>
                         <option value = "hardcover-nonfiction">Hardcover Nonfiction</option>
                         <option value = "paperback-nonfiction">Paperback Nonfiction</option>
                         <option value = "picture-books">Picture Books</option>
@@ -33,7 +34,7 @@
                   </select>
                <br>
                <label>Year</label> 
-                <select id = "Year">
+                <select name = "Year">
                     <option value = "2020">2020</option>
                     <option value = "2019">2019</option>
                     <option value = "2018">2018</option>
@@ -42,8 +43,7 @@
                     <option value = "2015">2015</option>
           </select>
             </fieldset>
-            <form action="/action_page.php">
-                <input type="submit" value="Submit">
+                <button> Search </button>
             </p>
          </form>
   </body>
