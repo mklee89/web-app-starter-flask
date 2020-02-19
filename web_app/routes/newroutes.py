@@ -38,31 +38,9 @@ def request_books_to_read():
     print(type(response))
 
     parsed_response = json.loads(response.text)
-
-    for b in parsed_response["results"]["books"]:
+    books=parsed_response["results"]["books"]
+    for b in books:
         print(b["rank"], b["title"], b["author"], b["description"])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -73,4 +51,4 @@ def request_books_to_read():
     #product_name = request.form["product_name"]
     #flash(f"Product '{product_name}' created successfully!", "success") # use the "success" category to correspond with twitter bootstrap alert colors
     #return redirect("newhomepage.html")
-    return render_template("booksresults.html")
+    return render_template("booksresults.html", books=books)
