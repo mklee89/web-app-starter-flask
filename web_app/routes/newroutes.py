@@ -21,7 +21,7 @@ def request_books_to_read():
     print("FORM DATA:", dict(request.form))
     #return jsonify(request.form)
 
-    book_genre = request.form["Bookgenre"]
+    genre_name = request.form["Bookgenre"]
     year_published = request.form["Year"]
 
 
@@ -32,7 +32,8 @@ def request_books_to_read():
 
 
 
-    genre_name="hardcover-fiction"
+    #genre_name="hardcover-fiction"
+  
     request_url = f"https://api.nytimes.com/svc/books/v3/lists/current/{genre_name}.json?api-key={api_key}"
     response = requests.get(request_url)
     print(type(response))
@@ -51,4 +52,4 @@ def request_books_to_read():
     #product_name = request.form["product_name"]
     #flash(f"Product '{product_name}' created successfully!", "success") # use the "success" category to correspond with twitter bootstrap alert colors
     #return redirect("newhomepage.html")
-    return render_template("booksresults.html", books=books)
+    return render_template("booksresults.html", books=books, genre_name=genre_name)
